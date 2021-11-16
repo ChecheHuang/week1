@@ -171,7 +171,6 @@ const Home = () => {
   useEffect(()=>{
     setSearchItem(["", "類別", "不分縣市"])
   },[status])
-
   
 
   return (

@@ -19,13 +19,9 @@ function Header(props) {
     activityData,
     searchDisplayData,
     setSearchDisplayData,
-    secondDisplayData,
-    status,
-    setSecondDisplayData
-
   } = props;
-  
   function headerSearch() {
+    console.log(searchDisplayData)
     setStatus("loading")
     setTimeout(() => {
       setStatus("搜尋");
@@ -121,7 +117,7 @@ function Header(props) {
             })
 
             if(searchItem[2]==="不分縣市"){
-              setSearchDisplayData({"searchTitle":"景點活動","city":"","displayData":[...activity1,scenic1]})
+              setSearchDisplayData({"searchTitle":"景點活動","city":"","displayData":[...activity1,...scenic1]})
             }else{
               setSearchDisplayData({"searchTitle":"景點活動","city":searchItem[2],"displayData":[...activity2,...scenic2]})
             }
@@ -148,9 +144,9 @@ function Header(props) {
               return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
             })
             if(searchItem[2]==="不分縣市"){
-              setSearchDisplayData({"searchTitle":"美食住宿","city":"","displayData":[...restaurant1,hotel1]})
+              setSearchDisplayData({"searchTitle":"美食住宿","city":"","displayData":[...restaurant1,...hotel1]})
             }else{
-              setSearchDisplayData({"searchTitle":"美食住宿","city":searchItem[2],"displayData":[...restaurant2,hotel2]})
+              setSearchDisplayData({"searchTitle":"美食住宿","city":searchItem[2],"displayData":[...restaurant2,...hotel2]})
             }
           }
           break;

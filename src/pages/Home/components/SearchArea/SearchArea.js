@@ -4,7 +4,7 @@ import union from "../images/Union.png"
 import "./searchArea.css"
 function SearchArea(props) {
     const { searchDisplayData } = props
-    // console.log(searchDisplayData)
+    console.log(searchDisplayData)
     return (
         <>
             {searchDisplayData.displayData.length > 0 ? (<SearchOutput searchDisplayData={searchDisplayData} />) : <div className="searchIndexZero">
