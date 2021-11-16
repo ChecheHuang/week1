@@ -1,0 +1,29 @@
+footer{
+    margin-top: 1vw;
+    height: 5vw ;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerText{
+    font-size: 1vw;
+    color: rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 768px){
+    footer{
+    margin-top: 3vh;
+    height: 4vh ;
+
+    }
+}
+@media screen and (max-width: 576px){
+    footer{
+    margin-top: 6vh;
+    height: 4vh ;
+    }
+    .footerText{
+        font-size: 1vw;
+    }
+}

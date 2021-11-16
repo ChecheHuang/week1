@@ -1,0 +1,194 @@
+.foodArea {
+  width: 100%;
+  margin-top: 2.7vw;
+  margin-bottom: 2vw;
+}
+
+.square {
+  height: 1.7vw;
+  width: 1.7vw;
+  background: #ffb72c;
+}
+.foodItemArea {
+  margin: 1vw 9vw 0vw 9vw;
+}
+.foodItemArea .item {
+  border: .9vw solid white;
+  position: relative;
+  width: 19%;
+  height: 18.9vw;
+  background: white;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 2vw;
+}
+
+.foodItemArea .shadow1 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 70%;
+  transform-origin: right;
+  transform: skewY(-9deg);
+  filter: blur(6px);
+  opacity: 0.4;
+  bottom: -1%;
+  left: -2%;
+  z-index: -1;
+}
+.foodItemArea .shadow2 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 70%;
+  transform-origin: left;
+  transform: skewY(9deg);
+  filter: blur(6px);
+  opacity: 0.4;
+  bottom: -1%;
+  right: -2%;
+  z-index: -1;
+}
+.item .imageArea {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+}
+.image {
+  transition: 0.4s;
+}
+
+.item .itemName {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+  position: absolute;
+
+  top: 10.8vw;
+ 
+
+  font-size: 1.1vw;
+  font-weight: bold;
+}
+.item .itemAddress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0.1vw;
+}
+.itemAddress .mapIcon {
+  width: 1vw;
+  height: 100%;
+  margin-right: 0.6vw;
+  margin-bottom: 0.4vw;
+}
+.itemAddress .address {
+  font-size: 1vw;
+  color: #007350;
+  white-space: nowrap;
+  width: 13vw;
+}
+@media screen and (max-width: 768px) {
+  .foodArea {
+    width: 100%;
+    margin-bottom: 0vw;
+  }
+  .square {
+    height: 2.8vw;
+    width: 2.8vw;
+  }
+  .foodItemArea {
+    margin: 2vw 7vw 0vw 8vw;
+  }
+  .foodItemArea .item {
+    position: relative;
+    width: 23%;
+    height: 23vw;
+    background: white;
+    display: inline-block;
+    margin-right: 2%;
+    margin-bottom: 2.6vw;
+  }
+  .item .imageArea {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    margin: 0;
+  }
+  .item .itemName {
+    position: absolute;
+    top: 13.3vw;
+    
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .itemAddress .address {
+    font-size: 12px;
+    color: #007350;
+    white-space: nowrap;
+    width: 13vw;
+  }
+}
+@media screen and (max-width: 576px) {
+  .title {
+    padding-left: 5vw;
+    margin-bottom: 0vw;
+    font-weight: bold;
+    padding-bottom: 0;
+  }
+  .square {
+    height: 6vw;
+    width: 6vw;
+  }
+  .foodArea {
+    width: 100%;
+    margin-bottom: 0vw;
+  }
+  .item .imageArea {
+    width: 100%;
+    height: 30vw;
+    overflow: hidden;
+    
+  }
+  .foodItemArea .item {
+    position: relative;
+    width: 48%;
+    height: 50vw;
+    background: white;
+    display: inline-block;
+    margin-right: 2%;
+    margin-bottom: 2vw;
+    border: 2vw solid white;
+  }
+  .item .itemName {
+    position: absolute;
+    top: 32vw;
+    height: auto;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+
+  }
+  .itemAddress .mapIcon {
+    width: 5vw;
+    height: 100%;
+    margin-right: 0.6vw;
+    margin-bottom: 1vw;
+  }
+  .item .itemAddress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -3%;
+    left: -1%;
+}
+  
+}

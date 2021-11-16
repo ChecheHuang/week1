@@ -1,0 +1,319 @@
+.activeArea {
+  margin-top: 5px;
+}
+
+
+
+.activeItem .shadow1 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 70%;
+  transform-origin: right;
+  transform: skewY(-9deg);
+  filter: blur(12px);
+  opacity: 0.6;
+  bottom: 10%;
+  left: 1%;
+  z-index: -1;
+}
+.activeItem .shadow2 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 70%;
+  transform-origin: left;
+  transform: skewY(9deg);
+  filter: blur(12px);
+  opacity: 0.6;
+  bottom: 10%;
+  right: 1%;
+  z-index: -1;
+}
+.contain {
+  width: 81.5%;
+  margin: auto;
+  margin-top: 1vw;
+}
+
+.activeItem {
+  width: 100%;
+  height: 17vw;
+  margin-bottom: 4vw;
+  position: relative;
+  background: white;
+  padding: 1.5vw;
+}
+.activeItem:hover .activeImage {
+  box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.5);
+  transform: translateY(-5px);
+}
+.activeImage {
+  transition: 0.5s;
+  width: 45%;
+  height: 100%;
+  box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
+  overflow: hidden;
+}
+
+.activeText {
+  width: 55%;
+  padding-left: 0.5vw;
+}
+.activeText h4 {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.3vw;
+  padding-left: 1vw;
+  /* padding-bottom: 1vw; */
+}
+.Description {
+  width: 90%;
+  text-align: justify;
+  font-size: 1vw;
+  color: gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  vertical-align: middle;
+  word-break: break-all;
+  text-indent: 2em;
+}
+.addressArea {
+  width: 90%;
+  /* background: #000; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.addressArea .button {
+  height: 2vw;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.address .redIcon {
+  height: 2vw;
+  width: 1.62vw;
+  margin-right: 4px;
+}
+.addressArea {
+  font-size: 1.3vw;
+}
+.addressName{
+  font-size: 1.1vw;
+  font-weight: 600;
+}
+.button button {
+  background: white;
+  border: 2px solid #ff1d6c;
+  /* padding: .5vw 1.5vw .5vw 1.5vw; */
+  border-radius: 8px;
+  color: #ff1d6c;
+  width: 95%;
+  height: 165%;
+  font-size: 1.1vw;
+  font-weight: 900;
+}
+.button button:hover {
+  background: #ff1d6c;
+  color: white;
+}
+.modalContainer {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.modalImages {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.modalImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+.modalImage2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+.modalImage3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+.buttonArea {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.modalLeftButton {
+  width: 2.5vw;
+  height: 2.5vw;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalRightButton {
+  width: 2.5vw;
+  height: 2.5vw;
+  background: rgb(14, 13, 13);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1vw;
+}
+
+.modalContainer p {
+  text-align: justify;
+  -webkit-box-orient: vertical;
+  vertical-align: middle;
+  word-break: break-all;
+  text-indent: 2em;
+  font-size: 0.9vw;
+  margin-bottom: 0;
+  min-height: 16vh;
+}
+.modalContainer h3 {
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  vertical-align: middle;
+  word-break: break-all;
+  font-size: 24px;
+}
+.modalIcon {
+  width: 8%;
+  margin-right: 1vw;
+}
+.modalIcon1 {
+  margin-right: 1vw;
+  width: 5%;
+}
+.iconArea {
+  margin-top: 2vh;
+}
+.iconItem {
+  font-size: 14px;
+  padding: 4px;
+}
+@media screen and (max-width: 768px) {
+  .activeItem {
+    width: 36vw;
+    height: 16vw;
+    margin-bottom: 4vw;
+    position: relative;
+    background: white;
+    padding: 1.5vw;
+  }
+  .activeText h4 {
+    display: inline-block;
+    overflow: auto;
+    text-overflow: inherit;
+    white-space: normal;
+    width: 100%;
+    font-weight: 700;
+    font-size: 2vw;
+    margin-left: 1vw;
+    text-align: left;
+  }
+  .Description {
+    display: none;
+  }
+  .addressArea .button {
+    display: none;
+  }
+  .addressArea {
+    display: flex;
+    justify-content: center;
+  }
+  .addressArea .address {
+    font-size: 2vw;
+  }
+  .address .redIcon {
+    height: 2.5vw;
+    width: 2vw;
+    margin-right: 4px;
+    margin-bottom: 1vw;
+  }
+  .addressName{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .activeArea{
+    margin-top: 4.4vw;
+  }
+  .activeArea .title {
+    /* padding-left: 5vw; */
+    margin-bottom: 3.5vw;
+    font-weight: bold;
+    padding-bottom: 0;
+  }
+  .activeItem {
+    width: 100vw;
+    height: 35vw;
+    margin-bottom: 8vw;
+    position: relative;
+    background: white;
+    padding: 3vw;
+  }
+  .activeImage {
+    transition: 0.5s;
+    width: 45%;
+    height: 100%;
+    box-shadow: 0 0 3px 1px rgb(51 51 51 / 50%);
+    overflow: hidden;
+  }
+  .activeText h4 {
+    display: inline-block;
+    overflow: auto;
+    text-overflow: inherit;
+    white-space: normal;
+    width: 100%;
+    font-weight: 700;
+    font-size: 3.8vw;
+    margin-left: 1vw;
+    text-align: left;
+  }
+  
+  .addressArea {
+    display: flex;
+    justify-content: center;
+  }
+  .addressArea .address {
+    font-size: 4vw;
+  }
+  .address .redIcon {
+    height: 5vw;
+    width: 4vw;
+    margin-right: 4px;
+    margin-bottom: 2vw;
+  }
+}

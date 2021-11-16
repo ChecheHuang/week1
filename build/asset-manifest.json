@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "./static/css/main.f26e3d28.chunk.css",
+    "main.js": "./static/js/main.d539a71d.chunk.js",
+    "main.js.map": "./static/js/main.d539a71d.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.703c7c84.js",
+    "runtime-main.js.map": "./static/js/runtime-main.703c7c84.js.map",
+    "static/js/2.d7cb5709.chunk.js": "./static/js/2.d7cb5709.chunk.js",
+    "static/js/2.d7cb5709.chunk.js.map": "./static/js/2.d7cb5709.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.f26e3d28.chunk.css.map": "./static/css/main.f26e3d28.chunk.css.map",
+    "static/js/2.d7cb5709.chunk.js.LICENSE.txt": "./static/js/2.d7cb5709.chunk.js.LICENSE.txt",
+    "static/media/bg1.31a16d82.jpg": "./static/media/bg1.31a16d82.jpg",
+    "static/media/bg2.5dc98f32.jpg": "./static/media/bg2.5dc98f32.jpg",
+    "static/media/bg3.dd67d0a8.jpg": "./static/media/bg3.dd67d0a8.jpg",
+    "static/media/南投.fca5f274.png": "./static/media/南投.fca5f274.png",
+    "static/media/台中.4aedb01c.png": "./static/media/台中.4aedb01c.png",
+    "static/media/台北.9f7dfd24.png": "./static/media/台北.9f7dfd24.png",
+    "static/media/台南.27f2a294.png": "./static/media/台南.27f2a294.png",
+    "static/media/台東.de504adf.png": "./static/media/台東.de504adf.png",
+    "static/media/嘉義.6dbf3a10.png": "./static/media/嘉義.6dbf3a10.png",
+    "static/media/宜蘭.7df98cd4.png": "./static/media/宜蘭.7df98cd4.png",
+    "static/media/屏東.db646a11.png": "./static/media/屏東.db646a11.png",
+    "static/media/新北.3abecb4b.png": "./static/media/新北.3abecb4b.png",
+    "static/media/新竹.c8184782.png": "./static/media/新竹.c8184782.png",
+    "static/media/桃園.3fb013b1.png": "./static/media/桃園.3fb013b1.png",
+    "static/media/花蓮.0017c111.png": "./static/media/花蓮.0017c111.png",
+    "static/media/金門.47a4f836.png": "./static/media/金門.47a4f836.png",
+    "static/media/高雄.6bf54a23.png": "./static/media/高雄.6bf54a23.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.703c7c84.js",
+    "static/js/2.d7cb5709.chunk.js",
+    "static/css/main.f26e3d28.chunk.css",
+    "static/js/main.d539a71d.chunk.js"
+  ]
+}

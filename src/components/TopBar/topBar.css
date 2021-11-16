@@ -1,0 +1,215 @@
+
+.topBar {
+  background: white;
+  height: 8.019vw;
+}
+.topText {
+  display: flex;
+  align-items: center;
+  margin-top: 0.8vw;
+}
+.topBar p {
+  transition: 0.3s;
+  font-weight: 800;
+}
+.topBarContainer {
+  padding-top: 1vw;
+  margin:auto ;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 7.6vw;
+  height: 100%;
+  margin-top: 0.2vw;
+  cursor: pointer;
+  margin-left: 1.7vw;
+}
+
+.topBarContainer p {
+  line-height: 56px;
+  margin-bottom: -5%;
+  text-decoration: underline;
+  font-size: 1.1vw;
+  margin-left: -5%;
+}
+.topBarContainer .theme {
+  display: flex;
+  align-items: center;
+  margin-top: 1vw;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.theme .circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+}
+.attractions .triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 6px 9px 6px;
+  border-color: transparent transparent #ffffff transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.attractions .circle {
+  background: #ff1d6c;
+}
+.attractions p {
+  color: #ff1d6c;
+}
+.active p {
+  letter-spacing: 10px;
+}
+.stay .circle {
+  background: #ffb72c;
+}
+.stay p {
+  color: #ffb72c;
+}
+.stay .square {
+  width: 9px;
+  height: 9px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.transportation .circle {
+  background: #007350;
+}
+.transportation p {
+  color: #007350;
+}
+.transportation .insideCircle {
+  width: 11px;
+  height: 11px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rwdSearchButton,
+.rwdSelectButton,
+.topBarShadow1,
+.topBarShadow2 {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .topBar {
+    height: 84px;
+    flex-direction: column;
+  }
+  .topBarContainer{
+    width: 96%;
+  }
+  .topBarContainer p{
+    font-size: 14px;
+  }
+  .logo{
+    width: 86px;
+    height: 50px;
+  }
+  
+  .shadowContainer {
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+  }
+  .topBarShadow1,
+  .topBarShadow2 {
+    display: block;
+    top: -15vw;
+    z-index: 4;
+  }
+
+ 
+}
+@media screen and (max-width: 576px) {
+  .topBar {
+    height: 53vw;
+  }
+  .topBarContainer {
+    flex-direction: column;
+  }
+  .shadowContainer {
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+  }
+  
+  .topBarContainer .theme {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 0;
+  }
+  .theme .circle {
+    display: none;
+  }
+  .active p {
+    letter-spacing: 0px;
+  }
+  .topText {
+    border-radius: 6px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+    justify-content: space-around;
+    height: 10vw;
+    align-items: center;
+    width: 96%;
+  }
+
+  .theme p {
+    color: #acacac;
+    text-decoration: none;
+    line-height: normal;
+    height: 100%;
+  }
+  .theme p:hover {
+    color: #FF1D6C;
+    
+  }
+  .logo {
+    position: relative;
+    min-width: 30vw;
+    height: 16vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    cursor: pointer;
+  }
+  .rwdSearchButton,
+  .rwdSelectButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 0px;
+    height: 9vw;
+    width: 9vw;
+    position: absolute;
+  }
+  .rwdSearchButton{
+    background: #ff1d6c;
+    right: -20vw;
+    top: 30%;
+  }
+  .rwdSelectButton{
+    background: #FFB72C;
+    right: -30vw;
+    top: 30%;
+  }
+
+  
+}

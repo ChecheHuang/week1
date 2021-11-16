@@ -1,0 +1,15 @@
+.searchIndexZero{
+    width: 60%;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.union{
+    width: 100px;
+    height: 100px;
+}
+.searchIndexZero h3{
+    color: #FFB72C;
+}
