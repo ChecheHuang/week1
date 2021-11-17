@@ -21,7 +21,6 @@ function Header(props) {
     setSearchDisplayData,
   } = props;
   function headerSearch() {
-    console.log(searchDisplayData)
     setStatus("loading")
     setTimeout(() => {
       setStatus("搜尋");

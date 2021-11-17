@@ -10,7 +10,6 @@ export default function ActiveItem(props) {
         setBlur(true)
     }
 
-    // const newPicture = Picture.PictureUrl1
     return (
         <div className="col-12 col-md-6 d-flex justify-content-center ">
             <div className="activeItem d-flex">

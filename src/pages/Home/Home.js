@@ -60,7 +60,7 @@ const Home = () => {
   ];
 
   //page1的類別下拉選單
-  const [selectTheme, setSelectTheme] = useState(["景點", "活動"]);
+  const [selectTheme, setSelectTheme] = useState(["類別","景點", "活動"]);
 
   //設定cityArea要接api參數
   const [city, setCity] = useState(["台北市", "Taipei"]);
@@ -168,9 +168,9 @@ const Home = () => {
       setActivityData
     );
   }, []);
-  useEffect(()=>{
-    setSearchItem(["", "類別", "不分縣市"])
-  },[status])
+  // useEffect(()=>{
+  //   setSearchItem(["", "類別", "不分縣市"])
+  // },[status])
   
 
   return (
