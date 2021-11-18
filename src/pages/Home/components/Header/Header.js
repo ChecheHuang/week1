@@ -21,139 +21,198 @@ function Header(props) {
     setSearchDisplayData,
   } = props;
   function headerSearch() {
-    setStatus("loading")
+    setStatus("loading");
     setTimeout(() => {
       setStatus("搜尋");
-    }, 1500)
-    setShowOption([false,false]);
-    if(scenicSpotData.length>1){
+    }, 1500);
+    setShowOption([false, false]);
+    if (scenicSpotData.length > 1) {
       // eslint-disable-next-line default-case
       switch (searchItem[1]) {
         case "景點":
-          
-          const scenic1=  scenicSpotData.filter((item,index)=>{
-            const inputSearchArea=item.Name|| ""
-            return inputSearchArea.indexOf(searchItem[0])>-1 
-          })
-          const scenic2=  scenic1.filter((item,index)=>{
-            const inputSearchArea=item.Address|| ""
-            return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-          })
-          
-          
-          if(searchItem[2]==="不分縣市"){
-            setSearchDisplayData({"searchTitle":"景點","city":"","displayData":scenic1})
-          }else{
-            setSearchDisplayData({"searchTitle":"景點","city":searchItem[2],"displayData":scenic2})
+          const scenic1 = scenicSpotData.filter((item, index) => {
+            const inputSearchArea = item.Name || "";
+            return inputSearchArea.indexOf(searchItem[0]) > -1;
+          });
+          const scenic2 = scenic1.filter((item, index) => {
+            const inputSearchArea = item.Address || "";
+            return (
+              inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+            );
+          });
+
+          if (searchItem[2] === "不分縣市") {
+            setSearchDisplayData({
+              searchTitle: "景點",
+              city: "",
+              displayData: scenic1,
+            });
+          } else {
+            setSearchDisplayData({
+              searchTitle: "景點",
+              city: searchItem[2],
+              displayData: scenic2,
+            });
           }
           break;
         case "活動":
-          const activity1=  activityData.filter((item,index)=>{
-            const inputSearchArea=item.Name|| ""
-            return inputSearchArea.indexOf(searchItem[0])>-1 
-          })
-          const activity2=  activity1.filter((item,index)=>{
-            const inputSearchArea=item.Address|| ""
-            return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-          })
-          if(searchItem[2]==="不分縣市"){
-            setSearchDisplayData({"searchTitle":"活動","city":"","displayData":activity1})
-          }else{
-            setSearchDisplayData({"searchTitle":"活動","city":searchItem[2],"displayData":activity2})
+          const activity1 = activityData.filter((item, index) => {
+            const inputSearchArea = item.Name || "";
+            return inputSearchArea.indexOf(searchItem[0]) > -1;
+          });
+          const activity2 = activity1.filter((item, index) => {
+            const inputSearchArea = item.Address || "";
+            return (
+              inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+            );
+          });
+          if (searchItem[2] === "不分縣市") {
+            setSearchDisplayData({
+              searchTitle: "活動",
+              city: "",
+              displayData: activity1,
+            });
+          } else {
+            setSearchDisplayData({
+              searchTitle: "活動",
+              city: searchItem[2],
+              displayData: activity2,
+            });
           }
           break;
         case "美食":
-          const restaurant1=  restaurantData.filter((item,index)=>{
-            const inputSearchArea=item.Name|| ""
-            return inputSearchArea.indexOf(searchItem[0])>-1 
-          })
-          const restaurant2=  restaurant1.filter((item,index)=>{
-            const inputSearchArea=item.Address|| ""
-            return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-          })
-          if(searchItem[2]==="不分縣市"){
-            setSearchDisplayData({"searchTitle":"美食","city":"","displayData":restaurant1})
-          }else{
-            setSearchDisplayData({"searchTitle":"美食","city":searchItem[2],"displayData":restaurant2})
+          const restaurant1 = restaurantData.filter((item, index) => {
+            const inputSearchArea = item.Name || "";
+            return inputSearchArea.indexOf(searchItem[0]) > -1;
+          });
+          const restaurant2 = restaurant1.filter((item, index) => {
+            const inputSearchArea = item.Address || "";
+            return (
+              inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+            );
+          });
+          if (searchItem[2] === "不分縣市") {
+            setSearchDisplayData({
+              searchTitle: "美食",
+              city: "",
+              displayData: restaurant1,
+            });
+          } else {
+            setSearchDisplayData({
+              searchTitle: "美食",
+              city: searchItem[2],
+              displayData: restaurant2,
+            });
           }
           break;
         case "住宿":
-          const hotel1=  hotelData.filter((item,index)=>{
-            const inputSearchArea=item.Name|| ""
-            return inputSearchArea.indexOf(searchItem[0])>-1 
-          })
-          const hotel2=  hotel1.filter((item,index)=>{
-            const inputSearchArea=item.Address|| ""
-            return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-          })
-          if(searchItem[2]==="不分縣市"){
-            setSearchDisplayData({"searchTitle":"住宿","city":"","displayData":hotel1})
-          }else{
-            setSearchDisplayData({"searchTitle":"住宿","city":searchItem[2],"displayData":hotel2})
+          const hotel1 = hotelData.filter((item, index) => {
+            const inputSearchArea = item.Name || "";
+            return inputSearchArea.indexOf(searchItem[0]) > -1;
+          });
+          const hotel2 = hotel1.filter((item, index) => {
+            const inputSearchArea = item.Address || "";
+            return (
+              inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+            );
+          });
+          if (searchItem[2] === "不分縣市") {
+            setSearchDisplayData({
+              searchTitle: "住宿",
+              city: "",
+              displayData: hotel1,
+            });
+          } else {
+            setSearchDisplayData({
+              searchTitle: "住宿",
+              city: searchItem[2],
+              displayData: hotel2,
+            });
           }
           break;
         case "類別":
-          if(headerBg==="header"){
+          if (headerBg === "header") {
             //活動篩選搜尋
-            const activity1=  activityData.filter((item,index)=>{
-              const inputSearchArea=item.Name|| ""
-              return inputSearchArea.indexOf(searchItem[0])>-1 
-            }) 
+            const activity1 = activityData.filter((item, index) => {
+              const inputSearchArea = item.Name || "";
+              return inputSearchArea.indexOf(searchItem[0]) > -1;
+            });
             //活動篩選縣市
-            const activity2=  activity1.filter((item,index)=>{
-              const inputSearchArea=item.Address|| ""
-              return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-            })
+            const activity2 = activity1.filter((item, index) => {
+              const inputSearchArea = item.Address || "";
+              return (
+                inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+              );
+            });
             //景點篩選
-            const scenic1=  scenicSpotData.filter((item,index)=>{
-              const inputSearchArea=item.Name|| ""
-              return inputSearchArea.indexOf(searchItem[0])>-1 
-            })
+            const scenic1 = scenicSpotData.filter((item, index) => {
+              const inputSearchArea = item.Name || "";
+              return inputSearchArea.indexOf(searchItem[0]) > -1;
+            });
             // 景點篩選城市
-            const scenic2=  scenic1.filter((item,index)=>{
-              const inputSearchArea=item.Address|| ""
-              return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-            })
+            const scenic2 = scenic1.filter((item, index) => {
+              const inputSearchArea = item.Address || "";
+              return (
+                inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+              );
+            });
 
-            if(searchItem[2]==="不分縣市"){
-              setSearchDisplayData({"searchTitle":"景點活動","city":"","displayData":[...activity1,...scenic1]})
-            }else{
-              setSearchDisplayData({"searchTitle":"景點活動","city":searchItem[2],"displayData":[...activity2,...scenic2]})
+            if (searchItem[2] === "不分縣市") {
+              setSearchDisplayData({
+                searchTitle: "景點活動",
+                city: "",
+                displayData: [...activity1, ...scenic1],
+              });
+            } else {
+              setSearchDisplayData({
+                searchTitle: "景點活動",
+                city: searchItem[2],
+                displayData: [...activity2, ...scenic2],
+              });
             }
-            
-            
           }
-          if(headerBg==="header2"){
+          if (headerBg === "header2") {
             //美食篩選
-            const restaurant1=  restaurantData.filter((item,index)=>{
-              const inputSearchArea=item.Name|| ""
-              return inputSearchArea.indexOf(searchItem[0])>-1 
-            })
-            const restaurant2=  restaurant1.filter((item,index)=>{
-              const inputSearchArea=item.Address|| ""
-              return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-            })
-           //住宿篩選
-            const hotel1=  hotelData.filter((item,index)=>{
-              const inputSearchArea=item.Name|| ""
-              return inputSearchArea.indexOf(searchItem[0])>-1 
-            })
-            const hotel2=  hotel1.filter((item,index)=>{
-              const inputSearchArea=item.Address|| ""
-              return inputSearchArea.indexOf(searchItem[2].replace('台','臺'))>-1 
-            })
-            if(searchItem[2]==="不分縣市"){
-              setSearchDisplayData({"searchTitle":"美食住宿","city":"","displayData":[...restaurant1,...hotel1]})
-            }else{
-              setSearchDisplayData({"searchTitle":"美食住宿","city":searchItem[2],"displayData":[...restaurant2,...hotel2]})
+            const restaurant1 = restaurantData.filter((item, index) => {
+              const inputSearchArea = item.Name || "";
+              return inputSearchArea.indexOf(searchItem[0]) > -1;
+            });
+            const restaurant2 = restaurant1.filter((item, index) => {
+              const inputSearchArea = item.Address || "";
+              return (
+                inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+              );
+            });
+            //住宿篩選
+            const hotel1 = hotelData.filter((item, index) => {
+              const inputSearchArea = item.Name || "";
+              return inputSearchArea.indexOf(searchItem[0]) > -1;
+            });
+            const hotel2 = hotel1.filter((item, index) => {
+              const inputSearchArea = item.Address || "";
+              return (
+                inputSearchArea.indexOf(searchItem[2].replace("台", "臺")) > -1
+              );
+            });
+            if (searchItem[2] === "不分縣市") {
+              setSearchDisplayData({
+                searchTitle: "美食住宿",
+                city: "",
+                displayData: [...restaurant1, ...hotel1],
+              });
+            } else {
+              setSearchDisplayData({
+                searchTitle: "美食住宿",
+                city: searchItem[2],
+                displayData: [...restaurant2, ...hotel2],
+              });
             }
           }
           break;
       }
     }
-    }
-    
-  
+  }
+
   //設定下拉選單顯示
   function handleShowOption() {
     const newShowOption = [...showOption];
@@ -182,20 +241,38 @@ function Header(props) {
     newSearch[0] = e.target.value;
     setSearchItem(newSearch);
   }
-  function showGeolocation (){
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition((position)=>{
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
-      })
-      
-    }else{
-      console.log("geolocation is not supported!")
+  function showGeolocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+      });
+    } else {
+      console.log("geolocation is not supported!");
     }
   }
 
   return (
     <>
+      {/* RWD搜尋 */}
+      <div className="rwdSearchPage">
+            <div className="searchPageInputArea">
+              <input className="fullPageInput" type="text" />
+            <button className="fullPageSearch " type="button">
+              <div className="searchIcon">
+                <img src={search} alt="searchIcon" />
+              </div>
+            </button>
+            </div>
+            <p className="clearSearch">清除搜尋紀錄</p>
+        <div className="searchRecord">
+            <p>誇年晚會</p>
+            <p>夜市</p>
+            <p>音樂會</p>
+            <p>畫展</p>
+            <p>歌手</p>
+        </div>
+        </div>
       {/* RWD版 */}
       <div className="row rwdHeader ">
         <div className="col-10 pe-0 mb-2">
@@ -259,7 +336,9 @@ function Header(props) {
         </div>
         <div className="col-2 pe-0 submitButtonArea">
           {/* rwd送出 */}
-          <div onClick={headerSearch} className="submitButton">送出</div>
+          <div onClick={headerSearch} className="submitButton">
+            送出
+          </div>
 
           {/* 正常搜尋 */}
           <button onClick={headerSearch} className="searchButton ">
@@ -293,7 +372,11 @@ function Header(props) {
                 />
               </div>
               <div className="col-2 pe-0 mb-2">
-                <button onClick={showGeolocation} className="selectButton" type="button">
+                <button
+                  onClick={showGeolocation}
+                  className="selectButton"
+                  type="button"
+                >
                   <div className="selectIcon">
                     <img src={Vector} alt="selectIcon" />
                   </div>
