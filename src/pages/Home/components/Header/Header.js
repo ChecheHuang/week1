@@ -182,6 +182,17 @@ function Header(props) {
     newSearch[0] = e.target.value;
     setSearchItem(newSearch);
   }
+  function showGeolocation (){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position)=>{
+        console.log(position.coords.latitude)
+        console.log(position.coords.longitude)
+      })
+      
+    }else{
+      console.log("geolocation is not supported!")
+    }
+  }
 
   return (
     <>
@@ -282,7 +293,7 @@ function Header(props) {
                 />
               </div>
               <div className="col-2 pe-0 mb-2">
-                <button className="selectButton" type="button">
+                <button onClick={showGeolocation} className="selectButton" type="button">
                   <div className="selectIcon">
                     <img src={Vector} alt="selectIcon" />
                   </div>
