@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./header.css";
 import search from "../images/search.png";
 import Vector from "../images/Vector.png";
@@ -251,6 +251,7 @@ function Header(props) {
       console.log("geolocation is not supported!");
     }
   }
+  const [searchRecord,setSearchRecord]=useState(["跨年晚會","夜市","音樂會","畫展","歌手"])
 
   return (
     <>
@@ -266,11 +267,14 @@ function Header(props) {
             </div>
             <p className="clearSearch">清除搜尋紀錄</p>
         <div className="searchRecord">
-            <p>誇年晚會</p>
+        {searchRecord.map((item,index)=>{
+          return <p>{item}</p>
+        })}
+            {/* <p>誇年晚會</p>
             <p>夜市</p>
             <p>音樂會</p>
             <p>畫展</p>
-            <p>歌手</p>
+            <p>歌手</p> */}
         </div>
         </div>
       {/* RWD版 */}
