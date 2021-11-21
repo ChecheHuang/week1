@@ -10,9 +10,7 @@ export default function TrafficHeader() {
     useEffect(()=>{
         getData("https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON",setBusData)
     },[])
-    busData.forEach((item)=>{
-        console.log(item.City)
-    })
+  
     const selectCity = [
         {chineseName:"基隆市",queryName:"Keelung"},
         {chineseName:"新北市",queryName:"NewTaipei"},
@@ -27,19 +25,31 @@ export default function TrafficHeader() {
         {chineseName:"屏東市",queryName:"PingtungCounty"},
         {chineseName:"彰化縣",queryName:"ChanghuaCounty"},
         {chineseName:"金門縣",queryName:"KinmenCounty"},
-       
       ];
+    const [routeName,setRouteName]=useState([])
+      function selectRoute (queryName){
+        setShowOption(false)
+        const filterData = busData.filter(item=>item.City===queryName)
+        const selectData = filterData.map(item=>item.TaiwanTripName.Zh_tw )
+        const City = selectCity.filter(item=>item.queryName===filterData[0].City )
+        setRouteName(selectData)
+        console.log(filterData)
+        setCity(City[0].chineseName)
+      }
+    
   return (
     <>
       <div className="trafficHeader">
         <div className="trafficSelectArea">
-          <div  onClick={()=>{setShowOption(!showOption)}} className="trafficSelect">
+          <div  onClick={()=>{
+                    setShowOption(!showOption)
+          }} className="trafficSelect">
             <div className="trafficSelected">
               {city}
             </div>
-            <div className={"trafficOptions "+(showOption &&"trafficOptionsActive")}>
+            <div  className={"trafficOptions "+(showOption &&"trafficOptionsActive")}>
             {selectCity.map((item,index)=>{
-                return <div className="trafficOption">{item.chineseName}</div>
+                return <div onClick={()=>{selectRoute(item.queryName)}} className="trafficOption">{item.chineseName}</div>
             })}
                 {/* <div className="trafficOption">台北市</div>
                 <div className="trafficOption">新竹</div>
