@@ -328,7 +328,7 @@
     z-index: 1030;
     /* top: 0; */
     top: -200%;
-    transition: .4s;
+    transition: 1s;
   }
   .rwdSearchPageActive{
     top: 0%;

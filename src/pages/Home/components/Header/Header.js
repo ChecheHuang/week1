@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./header.css";
 import search from "../images/search.png";
 import Vector from "../images/Vector.png";
@@ -253,49 +253,50 @@ function Header(props) {
       console.log("geolocation is not supported!");
     }
   }
-  const [searchRecord,setSearchRecord]=useState(["跨年晚會","夜市","音樂會","畫展","歌手"])
-  const[rwdSearchInput,setRwdSearchInput]=useState("")
+  const [searchRecord, setSearchRecord] = useState(["跨年晚會", "夜市", "音樂會", "畫展", "歌手"])
+  const [rwdSearchInput, setRwdSearchInput] = useState("")
 
   return (
     <>
       {/* RWD搜尋 */}
-      <div className={"rwdSearchPage "+(showRwdSearch && "rwdSearchPageActive")}>
-            <div className="searchPageInputArea">
-              <input onChange={(e)=>{
-                setRwdSearchInput(e.target.value)
-              }} className="fullPageInput" type="text" value={rwdSearchInput} />
+      <div className={"rwdSearchPage " + (showRwdSearch && "rwdSearchPageActive")}>
+        <div className="searchPageInputArea">
+          <input value={searchItem[0]}
+            onChange={searchInput} className="fullPageInput" type="text" />
 
-            <button className="fullPageSearch " type="button">
-              <div onClick={()=>{
-                setSearchRecord([rwdSearchInput,...searchRecord])
-                setRwdSearchInput("")
-                setShowRwdSearch(false)
-              }} className="searchIcon">
-                <img src={search} alt="searchIcon" />
-              </div>
-            </button>
+          <button className="fullPageSearch " type="button">
+            <div onClick={() => {
+              setShowRwdSearch(false)
+              if (searchItem[0].length !== 0) {
+                setSearchRecord([searchItem[0], ...searchRecord])
+              }
+              headerSearch()
+            }} className="searchIcon">
+              <img src={search} alt="searchIcon" />
             </div>
-            <p onClick={()=>{setSearchRecord([])}} className="clearSearch">清除搜尋紀錄</p>
-        <div className="searchRecord">
-        {searchRecord.map((item,index)=>{
-          return <><p>{item}<span onClick={()=>{
-            setSearchRecord(searchRecord.filter(item=>item!==searchRecord[index]))
-          }}>x</span></p>
-                 </>
-        })}
-            {/* <p>誇年晚會</p>
-            <p>夜市</p>
-            <p>音樂會</p>
-            <p>畫展</p>
-            <p>歌手</p> */}
+          </button>
         </div>
-            <div onClick={()=>{
+        <p onClick={() => { setSearchRecord([]) }} className="clearSearch">清除搜尋紀錄</p>
+        <div className="searchRecord">
+          {searchRecord.map((item, index) => {
+            return <><p onClick={() => {
+              const newSearch = [...searchItem];
+              newSearch[0] = item;
+              setSearchItem(newSearch);
+            }}>{item}<span onClick={() => {
+              setSearchRecord(searchRecord.filter(item => item !== searchRecord[index]))
+            }}>x</span></p>
+            </>
+          })}
+
+        </div>
+        {/* <div onClick={()=>{
               setShowRwdSearch(false)
             }} className="hideIcon">
               <div className="hideContain">
               </div>
-            </div>
-        </div>
+            </div> */}
+      </div>
       {/* RWD版 */}
       <div className="row rwdHeader ">
         <div className="col-10 pe-0 mb-2">

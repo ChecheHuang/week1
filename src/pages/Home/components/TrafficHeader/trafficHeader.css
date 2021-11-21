@@ -1,0 +1,117 @@
+.trafficHeader {
+  position: relative;
+  background: white;
+  width: 100%;
+  height: 13.28125vw;
+}
+.trafficHeaderShadow1 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 70%;
+  transform-origin: right;
+  transform: skewY(-7.5deg);
+  filter: blur(15px);
+  opacity: 0.6;
+  bottom: 54%;
+  left: 0%;
+  z-index: -1;
+}
+.trafficHeaderShadow2 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 70%;
+  transform-origin: left;
+  transform: skewY(7.5deg);
+  filter: blur(15px);
+  opacity: 0.6;
+  bottom: 54%;
+  right: 0%;
+  z-index: -1;
+}
+.trafficSelectArea {
+  width: 41.875vw;
+  height: 3.125vw;
+  position: absolute;
+  top: 20.58%;
+  left: 50%;
+  transform: translate(-50%, -20.58%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  cursor: pointer;
+}
+.trafficTarget {
+  width: 44.6875vw;
+  height: 3.90625vw;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background: yellow;
+  z-index: 1;
+}
+.trafficSelect {
+  width: 18.90625vw;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+.trafficButton {
+  width: 3.125vw;
+  height: 100%;
+  background: #ff1d6c;
+  box-shadow: 0px 2px 4px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  border: 0;
+}
+.btnSearchIcon {
+  width: 1.6vw;
+  height: 1.6vw;
+}
+.trafficDropIcon {
+  right: 0.5vw;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.5vw 0.3vw 0 0.3vw;
+  border-color: black transparent transparent transparent;
+}
+
+.trafficOptions{
+  position: absolute;
+  top: 100%;
+  background: white;
+  width: 100%;
+  right: 0;
+  z-index: 5;
+  border-radius: 6px;
+  box-shadow: 0px 2px 4px rgba(13, 11, 12, 0.2);
+  height: 0;
+  overflow-x: scroll;
+  transition: .6s;
+  /* opacity: 0.6; */
+}
+.trafficOptionsActive{
+  height: 15.625vw;
+  opacity: 1;
+  
+}
+.trafficOptions::-webkit-scrollbar {display: none;}
+.trafficOption{
+  height: 3.125vw;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.trafficOption:hover{
+  color: white;
+  background-color: #ff1d6c;
+}

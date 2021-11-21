@@ -14,6 +14,8 @@ import { getData } from "../../global/constants";
 import SearchArea from "./components/SearchArea/SearchArea";
 import Lottie from "react-lottie";
 import loading from "../../global/loading_TW.json"
+import TrafficHeader from "./components/TrafficHeader/TrafficHeader";
+import Traffic from "./components/Traffic/Traffic";
 
 const Home = () => {
   const defaultOptions = {
@@ -184,7 +186,7 @@ const Home = () => {
         setStatus={setStatus}
         setShowRwdSearch={setShowRwdSearch}
       />
-      <Header
+      {status!== "首頁三"&&<Header
         blur={blur}
         headerBg={header.headerBg}
         headerSlier={header.headerSlier}
@@ -206,7 +208,7 @@ const Home = () => {
         setSecondDisplayData={setSecondDisplayData}
         showRwdSearch={showRwdSearch}
         setShowRwdSearch={setShowRwdSearch}
-      />
+      />}
 
       {status === "首頁" && (
         <>
@@ -283,6 +285,11 @@ const Home = () => {
         height={200}
         width={200}/>
      }
+     {status ==="首頁三"&&
+     <>
+     <TrafficHeader/>
+     <Traffic/>
+     </>}
       <Footer blur={blur} />
     </div>
   );
