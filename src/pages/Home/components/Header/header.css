@@ -326,7 +326,12 @@
     height: 100vh;
     background: #e5e5e5;
     z-index: 1030;
-    top: 0;
+    /* top: 0; */
+    top: -100%;
+    transition: .4s;
+  }
+  .rwdSearchPageActive{
+    top: 0%;
   }
   .searchPageInputArea {
     width: 100%;
@@ -373,9 +378,10 @@
     background: #ffffff;
     border-radius: 6px;
     width: 328px;
-    height: 205px;
+    /* height: 205px; */
     margin: auto;
     padding-top: 11px;
+    padding-bottom: 2px;
   }
   .searchRecord p {
     font-size: 14px;
@@ -383,5 +389,28 @@
     color: #acacac;
     margin-bottom: 9px;
     margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+  }
+  .hideIcon {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(0%, -50%);
+  }
+  .hideContain {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7.5px 9px 7.5px;
+    border-color: transparent transparent #ff1d6c transparent;
   }
 }

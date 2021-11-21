@@ -19,6 +19,8 @@ function Header(props) {
     activityData,
     searchDisplayData,
     setSearchDisplayData,
+    showRwdSearch,
+    setShowRwdSearch
   } = props;
   function headerSearch() {
     setStatus("loading");
@@ -252,23 +254,34 @@ function Header(props) {
     }
   }
   const [searchRecord,setSearchRecord]=useState(["跨年晚會","夜市","音樂會","畫展","歌手"])
+  const[rwdSearchInput,setRwdSearchInput]=useState("")
 
   return (
     <>
       {/* RWD搜尋 */}
-      <div className="rwdSearchPage">
+      <div className={"rwdSearchPage "+(showRwdSearch && "rwdSearchPageActive")}>
             <div className="searchPageInputArea">
-              <input className="fullPageInput" type="text" />
+              <input onChange={(e)=>{
+                setRwdSearchInput(e.target.value)
+              }} className="fullPageInput" type="text" value={rwdSearchInput} />
+
             <button className="fullPageSearch " type="button">
-              <div className="searchIcon">
+              <div onClick={()=>{
+                setSearchRecord([rwdSearchInput,...searchRecord])
+                setRwdSearchInput("")
+                setShowRwdSearch(false)
+              }} className="searchIcon">
                 <img src={search} alt="searchIcon" />
               </div>
             </button>
             </div>
-            <p className="clearSearch">清除搜尋紀錄</p>
+            <p onClick={()=>{setSearchRecord([])}} className="clearSearch">清除搜尋紀錄</p>
         <div className="searchRecord">
         {searchRecord.map((item,index)=>{
-          return <p>{item}</p>
+          return <><p>{item}<span onClick={()=>{
+            setSearchRecord(searchRecord.filter(item=>item!==searchRecord[index]))
+          }}>x</span></p>
+                 </>
         })}
             {/* <p>誇年晚會</p>
             <p>夜市</p>
@@ -276,6 +289,12 @@ function Header(props) {
             <p>畫展</p>
             <p>歌手</p> */}
         </div>
+            <div onClick={()=>{
+              setShowRwdSearch(false)
+            }} className="hideIcon">
+              <div className="hideContain">
+              </div>
+            </div>
         </div>
       {/* RWD版 */}
       <div className="row rwdHeader ">

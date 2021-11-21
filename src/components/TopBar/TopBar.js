@@ -13,7 +13,7 @@ export default function TopBar({
   setHeader,
   setSelectTheme,
   setStatus,
-  
+  setShowRwdSearch
 }) {
   const [action, setAction] = useState(1);
   function change1() {
@@ -64,7 +64,7 @@ export default function TopBar({
             <img src={logo} alt="" />
 
             {/* rwd按鈕 */}
-            <button className="rwdSearchButton " type="button">
+            <button onClick={()=>{setShowRwdSearch(true)}} className="rwdSearchButton " type="button">
               <div className="searchIcon">
                 <img src={search} alt="searchIcon" />
               </div>

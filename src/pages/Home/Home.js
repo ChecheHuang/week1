@@ -171,7 +171,7 @@ const Home = () => {
   // useEffect(()=>{
   //   setSearchItem(["", "類別", "不分縣市"])
   // },[status])
-  
+  const [showRwdSearch,setShowRwdSearch]=useState(false)
 
   return (
     <div>
@@ -182,6 +182,7 @@ const Home = () => {
         setPage={setPage}
         setSelectTheme={setSelectTheme}
         setStatus={setStatus}
+        setShowRwdSearch={setShowRwdSearch}
       />
       <Header
         blur={blur}
@@ -203,6 +204,8 @@ const Home = () => {
         secondDisplayData={secondDisplayData}
         status={status}
         setSecondDisplayData={setSecondDisplayData}
+        showRwdSearch={showRwdSearch}
+        setShowRwdSearch={setShowRwdSearch}
       />
 
       {status === "首頁" && (
