@@ -331,7 +331,7 @@
     transition: .4s;
   }
   .rwdSearchPageActive{
-    top: 0%;
+    top: -100%;
   }
   .searchPageInputArea {
     width: 100%;
