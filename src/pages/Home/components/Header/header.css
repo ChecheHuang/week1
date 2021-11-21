@@ -327,11 +327,11 @@
     background: #e5e5e5;
     z-index: 1030;
     /* top: 0; */
-    top: -100%;
+    top: -200%;
     transition: .4s;
   }
   .rwdSearchPageActive{
-    top: -100%;
+    top: 0%;
   }
   .searchPageInputArea {
     width: 100%;
