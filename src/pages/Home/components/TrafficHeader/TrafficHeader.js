@@ -3,9 +3,11 @@ import "./trafficHeader.css";
 import search from "../images/search.png";
 import {getData} from "../../../../global/constants"
 
-export default function TrafficHeader() {
+export default function TrafficHeader(props) {
+  const {setStepDisplay}=props
     const [city,setCity]=useState("選擇縣市")
     const [showOption,setShowOption]=useState(false)
+    const [showOption2,setShowOption2]=useState(false)
     const [busData,setBusData]=useState([])
     useEffect(()=>{
         getData("https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON",setBusData)
@@ -27,14 +29,22 @@ export default function TrafficHeader() {
         {chineseName:"金門縣",queryName:"KinmenCounty"},
       ];
     const [routeName,setRouteName]=useState([])
+    const [routeSelected,setRouteSelected]=useState("選擇路線")
       function selectRoute (queryName){
         setShowOption(false)
         const filterData = busData.filter(item=>item.City===queryName)
         const selectData = filterData.map(item=>item.TaiwanTripName.Zh_tw )
         const City = selectCity.filter(item=>item.queryName===filterData[0].City )
         setRouteName(selectData)
-        console.log(filterData)
         setCity(City[0].chineseName)
+        setRouteSelected("選擇路線")
+
+      }
+      function getBusData(route){
+        setRouteSelected(route)
+      }
+      function routeSearch(){
+        setStepDisplay(true)
       }
     
   return (
@@ -51,23 +61,42 @@ export default function TrafficHeader() {
             {selectCity.map((item,index)=>{
                 return <div onClick={()=>{selectRoute(item.queryName)}} className="trafficOption">{item.chineseName}</div>
             })}
-                {/* <div className="trafficOption">台北市</div>
-                <div className="trafficOption">新竹</div>
-                <div className="trafficOption">新竹</div> */}
+             
             </div>
               <div className="trafficDropIcon"></div>
           </div>
-          <div className="trafficSelect">
-            <div className="trafficSelected">
-              選擇縣市
+          <div  onClick={()=>{
+                    setShowOption2(!showOption2)
+          }} className="trafficSelect">
+            <div className={"trafficSelected "+(routeName.length===0 && "trafficSelectedActive")}>
+              {routeSelected}
+            </div>
+            <div  className={"trafficOptions "+(showOption2 &&"routeOptionsActive")}>
+            {routeName.map((item,index)=>{
+                return <div onClick={()=>{getBusData(item)}} className="trafficOption">{item}</div>
+            })}
+             
             </div>
               <div className="trafficDropIcon"></div>
           </div>
-          <button class="trafficButton">
+          <button onClick={routeSearch} className="trafficButton">
             <img className="btnSearchIcon" src={search} alt="" />
           </button>
         </div>
-        <div className="trafficTarget"></div>
+        <div className="trafficTarget">
+          <div className="trafficStart">
+            <div className="trafficStartContain">
+                <div>往</div>
+                <div className="trafficStep" >蘭潭</div>
+            </div>
+          </div>
+          <div className="trafficEnd">
+          <div className="trafficStartContain">
+                <div>往</div>
+                <div className="trafficStep" >港坪運動公園</div>
+            </div>
+          </div>
+        </div>
         <div className="trafficHeaderShadow1"></div>
         <div className="trafficHeaderShadow2"></div>
       </div>

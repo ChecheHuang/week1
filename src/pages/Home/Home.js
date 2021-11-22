@@ -174,6 +174,8 @@ const Home = () => {
   //   setSearchItem(["", "類別", "不分縣市"])
   // },[status])
   const [showRwdSearch,setShowRwdSearch]=useState(false)
+  // 景點頁面站牌資訊
+  const [stepDisplay,setStepDisplay]=useState(false)
 
   return (
     <div>
@@ -287,8 +289,8 @@ const Home = () => {
      }
      {status ==="首頁三"&&
      <>
-     <TrafficHeader/>
-     <Traffic/>
+     <TrafficHeader setStepDisplay={setStepDisplay}/>
+     <Traffic stepDisplay={stepDisplay} />
      </>}
       <Footer blur={blur} />
     </div>

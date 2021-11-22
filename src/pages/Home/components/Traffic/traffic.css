@@ -1,4 +1,80 @@
-.traffic{
+.traffic {
+  width: 100%;
+  /* height: 80vh; */
+}
+.trafficInfo {
+  margin: auto;
+  margin-bottom: 6.5625vw;
+  background: white;
+  width: 74.609375vw;
+  height: 78.125vw;
+  position: relative;
+}
+.pleaseSelect {
+  font-size: 1.875vw;
+  color: #acacac;
+  padding-top: 3.125vw;
+  margin-left: 56px;
+}
+.traffic p {
+  text-align: end;
+  font-size: 1.25vw;
+  color: #ff1d6c;
+  margin-right: 12vw;
+  margin-top: 3.59375vw;
+  margin-bottom: 0.9375vw;
+  font-weight: 600;
+}
+.trafficShadow1 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 20%;
+  transform-origin: right;
+  transform: skewY(-7.5deg);
+  filter: blur(5px);
+  opacity: 0.8;
+  bottom: 4%;
+  left: 1%;
+  z-index: -1;
+}
+.trafficShadow2 {
+  position: absolute;
+  background: black;
+  width: 70%;
+  height: 20%;
+  transform-origin: left;
+  transform: skewY(7.5deg);
+  filter: blur(5px);
+  opacity: 0.8;
+  bottom: 4%;
+  right: 1%;
+  z-index: -1;
+}
+.stepContainer{
     width: 100%;
-    height: 80vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.stepArea{
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    width: 50%;
+    height: 30%;
+}
+.stepItem{
+    width: 11.171875vw;
+    height: 3.4375vw;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10vw;
+    margin-right: 2.578125vw;
+}
+.stepText{
+    font-size: 16px;
 }
