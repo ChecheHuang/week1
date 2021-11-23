@@ -1,7 +1,8 @@
 import React from 'react'
 import "./traffic.css"
 export default function Traffic(props) {
-    const { stepDisplay } = props
+    const { stepDisplay,stepInfo } = props
+    // console.log(stepInfo)
     return (
         <>
             <div className="traffic">
@@ -10,6 +11,54 @@ export default function Traffic(props) {
                     {stepDisplay ?
                         <>
                            <div className="stepContainer">
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            11:12
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
+                                <div class="stepArea">
+                                        <div class="stepItem">
+                                            未發車
+                                        </div>
+                                        <div class="stepText">港坪運動公園</div>
+                                </div>
                                 <div class="stepArea">
                                         <div class="stepItem">
                                             未發車

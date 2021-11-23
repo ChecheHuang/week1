@@ -4,7 +4,7 @@ import search from "../images/search.png";
 import {getData} from "../../../../global/constants"
 
 export default function TrafficHeader(props) {
-  const {setStepDisplay}=props
+  const {setStepDisplay,setStepInfo,stepInfo}=props
     const [city,setCity]=useState("選擇縣市")
     const [showOption,setShowOption]=useState(false)
     const [showOption2,setShowOption2]=useState(false)
@@ -45,7 +45,16 @@ export default function TrafficHeader(props) {
       }
       function routeSearch(){
         setStepDisplay(true)
+        getData(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,setStepInfo)
       }
+      const outBand=stepInfo.filter((item)=>{
+        return item.Direction===0
+      })
+      console.log(outBand)
+      const back=stepInfo.filter((item)=>{
+        return item.Direction===1
+      })
+      console.log(back)
     
   return (
     <>

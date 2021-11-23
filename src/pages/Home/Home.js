@@ -13,7 +13,7 @@ import BackgroundSlider from "react-background-slider";
 import { getData } from "../../global/constants";
 import SearchArea from "./components/SearchArea/SearchArea";
 import Lottie from "react-lottie";
-import loading from "../../global/loading_TW.json"
+import loading from "../../global/loading_TW.json";
 import TrafficHeader from "./components/TrafficHeader/TrafficHeader";
 import Traffic from "./components/Traffic/Traffic";
 
@@ -23,13 +23,10 @@ const Home = () => {
     autoplay: true,
     animationData: loading,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
- 
-    
 
- 
   // 首頁  分頁  程式連結  header搜尋
   const [status, setStatus] = useState("首頁");
   // console.log(status);
@@ -62,7 +59,7 @@ const Home = () => {
   ];
 
   //page1的類別下拉選單
-  const [selectTheme, setSelectTheme] = useState(["類別","景點", "活動"]);
+  const [selectTheme, setSelectTheme] = useState(["類別", "景點", "活動"]);
 
   //設定cityArea要接api參數
   const [city, setCity] = useState(["台北市", "Taipei"]);
@@ -90,12 +87,14 @@ const Home = () => {
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=10&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=10&$skip=${Math.floor(Math.random() * 4000) + 50
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=10&$skip=${
+      Math.floor(Math.random() * 4000) + 50
     }&$format=JSON`,
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?$top=10&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${city[1]
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${
+      city[1]
     }?$top=20&$skip=${page * 20}&$format=JSON`,
   ]);
 
@@ -104,22 +103,26 @@ const Home = () => {
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=12&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=12&$skip=${Math.floor(Math.random() * 4000) + 50
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=12&$skip=${
+      Math.floor(Math.random() * 4000) + 50
     }&$format=JSON`,
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?$top=12&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${city[1]
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${
+      city[1]
     }?$top=20&$skip=${page * 20}&$format=JSON`,
   ]);
 
   useEffect(() => {
     const newApi = [...api];
     const newRwdApi = [...rwdApi];
-    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city[1]
-      }?$top=20&$skip=${page * 20}&$format=JSON`;
-    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city[1]
-      }?$top=20&$skip=${page * 20}&$format=JSON`;
+    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${
+      city[1]
+    }?$top=20&$skip=${page * 20}&$format=JSON`;
+    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${
+      city[1]
+    }?$top=20&$skip=${page * 20}&$format=JSON`;
     setApi(newApi);
     setRwdApi(newRwdApi);
   }, [page, city]);
@@ -138,7 +141,6 @@ const Home = () => {
     }
   }
 
-
   // 搜尋用
   //觀光所有資料
   const [scenicSpotData, setScenicSpotData] = useState([]);
@@ -149,8 +151,16 @@ const Home = () => {
   //活動所有資料
   const [activityData, setActivityData] = useState([]);
   //搜尋顯示資料
-  const [searchDisplayData, setSearchDisplayData] = useState({"searchTitle":"","city":"","displayData":[]});
-  const [secondDisplayData, setSecondDisplayData] = useState({"searchTitle":"","city":"","displayData":[]});
+  const [searchDisplayData, setSearchDisplayData] = useState({
+    searchTitle: "",
+    city: "",
+    displayData: [],
+  });
+  const [secondDisplayData, setSecondDisplayData] = useState({
+    searchTitle: "",
+    city: "",
+    displayData: [],
+  });
   //進來就把所有api打一遍
   useEffect(() => {
     getData(
@@ -173,13 +183,14 @@ const Home = () => {
   // useEffect(()=>{
   //   setSearchItem(["", "類別", "不分縣市"])
   // },[status])
-  const [showRwdSearch,setShowRwdSearch]=useState(false)
+  const [showRwdSearch, setShowRwdSearch] = useState(false);
   // 景點頁面站牌資訊
-  const [stepDisplay,setStepDisplay]=useState(false)
+  const [stepDisplay, setStepDisplay] = useState(false);
+  // 景點頁面到站資訊
+  const [stepInfo, setStepInfo] = useState([]);
 
   return (
     <div>
-      
       <TopBar
         blur={blur}
         setHeader={setHeader}
@@ -188,29 +199,31 @@ const Home = () => {
         setStatus={setStatus}
         setShowRwdSearch={setShowRwdSearch}
       />
-      {status!== "首頁三"&&<Header
-        blur={blur}
-        headerBg={header.headerBg}
-        headerSlier={header.headerSlier}
-        searchItem={searchItem}
-        setSearchItem={setSearchItem}
-        showOption={showOption}
-        setShowOption={setShowOption}
-        selectCity={selectCity}
-        selectTheme={selectTheme}
-        setStatus={setStatus}
-        scenicSpotData={scenicSpotData}
-        restaurantData={restaurantData}
-        hotelData={hotelData}
-        activityData={activityData}
-        searchDisplayData={searchDisplayData}
-        setSearchDisplayData={setSearchDisplayData}
-        secondDisplayData={secondDisplayData}
-        status={status}
-        setSecondDisplayData={setSecondDisplayData}
-        showRwdSearch={showRwdSearch}
-        setShowRwdSearch={setShowRwdSearch}
-      />}
+      {status !== "首頁三" && (
+        <Header
+          blur={blur}
+          headerBg={header.headerBg}
+          headerSlier={header.headerSlier}
+          searchItem={searchItem}
+          setSearchItem={setSearchItem}
+          showOption={showOption}
+          setShowOption={setShowOption}
+          selectCity={selectCity}
+          selectTheme={selectTheme}
+          setStatus={setStatus}
+          scenicSpotData={scenicSpotData}
+          restaurantData={restaurantData}
+          hotelData={hotelData}
+          activityData={activityData}
+          searchDisplayData={searchDisplayData}
+          setSearchDisplayData={setSearchDisplayData}
+          secondDisplayData={secondDisplayData}
+          status={status}
+          setSecondDisplayData={setSecondDisplayData}
+          showRwdSearch={showRwdSearch}
+          setShowRwdSearch={setShowRwdSearch}
+        />
+      )}
 
       {status === "首頁" && (
         <>
@@ -279,19 +292,27 @@ const Home = () => {
           </div>
         </>
       )}
-      {status === "搜尋" && <>
-       <SearchArea searchDisplayData={searchDisplayData} secondDisplayData={secondDisplayData} />
-      </>}
-    {status === "loading" &&
-    <Lottie  options={defaultOptions}
-        height={200}
-        width={200}/>
-     }
-     {status ==="首頁三"&&
-     <>
-     <TrafficHeader setStepDisplay={setStepDisplay}/>
-     <Traffic stepDisplay={stepDisplay} />
-     </>}
+      {status === "搜尋" && (
+        <>
+          <SearchArea
+            searchDisplayData={searchDisplayData}
+            secondDisplayData={secondDisplayData}
+          />
+        </>
+      )}
+      {status === "loading" && (
+        <Lottie options={defaultOptions} height={200} width={200} />
+      )}
+      {status === "首頁三" && (
+        <>
+          <TrafficHeader
+            setStepDisplay={setStepDisplay}
+            setStepInfo={setStepInfo}
+            stepInfo={stepInfo}
+          />
+          <Traffic stepDisplay={stepDisplay} stepInfo={stepInfo} />
+        </>
+      )}
       <Footer blur={blur} />
     </div>
   );
