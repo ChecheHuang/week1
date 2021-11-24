@@ -123,6 +123,7 @@
   /* z-index: 1; */
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 .trafficStart{
   background: white;
@@ -132,7 +133,6 @@
   justify-content: center;
   align-items: center;
   border-bottom: 0.3125vw solid #ff1d6c;
-  
 }
 .trafficEnd{
   background: white;
