@@ -11,6 +11,7 @@ export default function TrafficHeader(props) {
   const [showOption, setShowOption] = useState(false)
   const [showOption2, setShowOption2] = useState(false)
   const [busData, setBusData] = useState([])
+  console.log(busData.filter(item=>item.city))
   useEffect(() => {
     axios.get(
       "https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON",
@@ -39,50 +40,23 @@ export default function TrafficHeader(props) {
     return { 'Authorization': Authorization, 'X-Date': GMTString };
   }
   function getGo(){
+    
+
     axios.get(
-      `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
+      `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
       {
         headers: getAuthorizationHeader()
       }
     )
       .then(function (response) {
-        const displayData=[...response.data].filter(item => item.Direction === 0);
-        console.log(displayData)
-        displayData.sort((a, b) => {
-          if (b.EstimateTime === undefined||a.EstimateTime===undefined) {
-            b.EstimateTime = "沒資料"
-            a.EstimateTime = "沒資料"
-          }
-          return a.EstimateTime - b.EstimateTime
-        })
-        setStepInfoDisplay(displayData)
+        setStepInfoDisplay(response.data)
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  function getBack(){
-    axios.get(
-      `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
-      {
-        headers: getAuthorizationHeader()
-      }
-    )
-      .then(function (response) {
-        const displayData=[...response.data].filter(item => item.Direction === 1);
-        displayData.sort((a, b) => {
-          if (b.EstimateTime === undefined||a.EstimateTime===undefined) {
-            b.EstimateTime = "沒資料"
-            a.EstimateTime = "沒資料"
-          }
-          return a.EstimateTime - b.EstimateTime
-        })
-        setStepInfoDisplay(displayData)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  console.log(stepInfoDisplay[0])
+ 
   const selectCity = [
     { chineseName: "基隆市", queryName: "Keelung" },
     { chineseName: "新北市", queryName: "NewTaipei" },
@@ -129,7 +103,6 @@ export default function TrafficHeader(props) {
     getGo()
   }
   function back() {
-    getBack()
   }
   return (
     <>

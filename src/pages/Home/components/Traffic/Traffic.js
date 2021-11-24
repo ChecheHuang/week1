@@ -2,7 +2,7 @@ import React from "react";
 import "./traffic.css";
 export default function Traffic(props) {
   const { stepDisplay, stepInfo,stepInfoDisplay,setStepInfoDisplay} = props;
-
+console.log(stepInfoDisplay[0])
   return (
     <>
       <div className="traffic">
@@ -11,18 +11,13 @@ export default function Traffic(props) {
           {stepDisplay ? (
             <>
               <div className="stepContainer">
-              {stepInfoDisplay.map(((item,index)=>{
-                 const {EstimateTime,StopName}=item
+              {/* {stepInfoDisplay[0].Stops.map(((item,index)=>{
+                 
                   return  <div class="stepArea">
-                  {EstimateTime==="沒資料"&&
-                   <div class="stepItem stepItemActive2">{EstimateTime}</div>
-                   }
-                  {parseInt(EstimateTime)>0 &&
-                    <div class="stepItem ">{parseInt(EstimateTime)/60+'分'}</div>
-                   }
-                  <div class="stepText">{StopName.Zh_tw}</div>
+                    <div class="stepItem ">未到站</div>
+                  <div class="stepText">{item.StopName}</div>
                 </div>
-              }))}
+              }))} */}
                
                 
               </div>
