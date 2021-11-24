@@ -1,15 +1,8 @@
 import React from "react";
 import "./traffic.css";
 export default function Traffic(props) {
-  const { stepDisplay, stepInfo,stepInfoDisplay} = props;
-  const outBand=stepInfo.filter((item)=>{
-    return item.Direction===0
-  })
-  console.log(outBand)
-  const back=stepInfo.filter((item)=>{
-    return item.Direction===1
-  })
-  console.log(back)
+  const { stepDisplay, stepInfo,stepInfoDisplay,setStepInfoDisplay} = props;
+
   return (
     <>
       <div className="traffic">
@@ -18,11 +11,16 @@ export default function Traffic(props) {
           {stepDisplay ? (
             <>
               <div className="stepContainer">
-              {outBand.map(((item,index)=>{
-                 
+              {stepInfoDisplay.map(((item,index)=>{
+                 const {EstimateTime,StopName}=item
                   return  <div class="stepArea">
-                  <div class="stepItem">未發車</div>
-                  <div class="stepText">{item.StopName.Zh_tw}</div>
+                  {EstimateTime==="沒資料"&&
+                   <div class="stepItem stepItemActive2">{EstimateTime}</div>
+                   }
+                  {parseInt(EstimateTime)>0 &&
+                    <div class="stepItem ">{parseInt(EstimateTime)/60+'分'}</div>
+                   }
+                  <div class="stepText">{StopName.Zh_tw}</div>
                 </div>
               }))}
                

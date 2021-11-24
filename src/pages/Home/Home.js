@@ -189,7 +189,7 @@ const Home = () => {
   // 景點頁面到站資訊
   const [stepInfo, setStepInfo] = useState([]);
   //景點頁面站牌來回呈現資料
-  const [stepInfoDisplay,setStepInfoDisplay]=useState([])
+  const [stepInfoDisplay, setStepInfoDisplay] = useState([]);
 
   return (
     <div>
@@ -314,7 +314,12 @@ const Home = () => {
             stepInfoDisplay={stepInfoDisplay}
             setStepInfoDisplay={setStepInfoDisplay}
           />
-          <Traffic stepDisplay={stepDisplay} stepInfo={stepInfo} stepInfoDisplay={stepInfoDisplay} />
+          <Traffic
+            stepDisplay={stepDisplay}
+            stepInfo={stepInfo}
+            stepInfoDisplay={stepInfoDisplay}
+            setStepInfoDisplay={setStepInfoDisplay}
+          />
         </>
       )}
       <Footer blur={blur} />
