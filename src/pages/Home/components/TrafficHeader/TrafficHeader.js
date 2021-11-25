@@ -11,7 +11,6 @@ export default function TrafficHeader(props) {
   const [showOption, setShowOption] = useState(false)
   const [showOption2, setShowOption2] = useState(false)
   const [busData, setBusData] = useState([])
-  console.log(busData.filter(item=>item.city))
   useEffect(() => {
     axios.get(
       "https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON",
@@ -40,8 +39,6 @@ export default function TrafficHeader(props) {
     return { 'Authorization': Authorization, 'X-Date': GMTString };
   }
   function getGo(){
-    
-
     axios.get(
       `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
       {
@@ -49,13 +46,17 @@ export default function TrafficHeader(props) {
       }
     )
       .then(function (response) {
-        setStepInfoDisplay(response.data)
+        if(response.data.length===2){
+          setStepInfoDisplay(response.data)
+          const firstStop=response.data[0].Stops[0].StopName.Zh_tw
+          const endStop=response.data[1].Stops[0].StopName.Zh_tw
+          setStepStart([endStop,firstStop])
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  console.log(stepInfoDisplay[0])
  
   const selectCity = [
     { chineseName: "基隆市", queryName: "Keelung" },
@@ -89,20 +90,23 @@ export default function TrafficHeader(props) {
   }
   const [stepStart, setStepStart] = useState(["蘭潭", "港坪運動公園"])
   function routeSearch() {
-    console.log(123)
     if (routeSelected !== "選擇路線") {
       setStepDisplay(true)
       getGo()
+     setStepInfo(0)
+
+     
     }
   }
-  // console.log(stepInfoDisplay)
+  // console.log(firstStop,endStop)
 
 
-  // console.log(stepInfoDisplay[stepInfoDisplay.length-1])
   function go() {
     getGo()
+    setStepInfo(0)
   }
   function back() {
+    setStepInfo(1)
   }
   return (
     <>
@@ -141,13 +145,13 @@ export default function TrafficHeader(props) {
           </button>
         </div>
         <div className="trafficTarget">
-          <div className="trafficStart">
+          <div className={"trafficStart "+(stepInfo===0&&"trafficActive")}>
             <div onClick={go} className="trafficStartContain">
               <div>往</div>
               <div className="trafficStep" >{stepStart[0]}</div>
             </div>
           </div>
-          <div onClick={back} className="trafficEnd">
+          <div onClick={back} className={"trafficStart "+(stepInfo===1&&"trafficActive")}>
             <div className="trafficStartContain">
               <div>往</div>
               <div className="trafficStep" >{stepStart[1]}</div>

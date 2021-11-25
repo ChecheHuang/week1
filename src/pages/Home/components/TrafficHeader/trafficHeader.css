@@ -132,17 +132,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.trafficActive{
   border-bottom: 0.3125vw solid #ff1d6c;
 }
-.trafficEnd{
-  background: white;
-  height: 100%;
-  width: 19.0625vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* border-bottom: 0.3125vw solid #ff1d6c; */
-}
+
 .trafficStartContain{
   font-size: 16px;
   display: flex;
