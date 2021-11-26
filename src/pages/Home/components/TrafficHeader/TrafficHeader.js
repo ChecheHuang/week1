@@ -38,6 +38,7 @@ export default function TrafficHeader(props) {
     let Authorization = 'hmac username="' + AppID + '", algorithm="hmac-sha1", headers="x-date", signature="' + HMAC + '"';
     return { 'Authorization': Authorization, 'X-Date': GMTString };
   }
+  const [timeData,setTimeData]=useState([[],[]])
   function getGo(){
     axios.get(
       `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
@@ -52,11 +53,37 @@ export default function TrafficHeader(props) {
           const endStop=response.data[1].Stops[0].StopName.Zh_tw
           setStepStart([endStop,firstStop])
         }
+        axios.get(
+          `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$format=JSON`,
+          {
+            headers: getAuthorizationHeader()
+          }
+        ).then(function(response){
+          
+          const hasTimeData=[{Name:"",Time:""}]
+          response.data.filter((item,index)=>{
+            if(item.EstimateTime){
+              hasTimeData[index].Time=item.EstimateTime
+              return true
+            }else{
+              return false
+            }
+          })
+          console.log(hasTimeData)
+        })
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+
+
+
+
+
+  useEffect(()=>{
+
+  },[])
  
   const selectCity = [
     { chineseName: "基隆市", queryName: "Keelung" },
@@ -98,7 +125,6 @@ export default function TrafficHeader(props) {
      
     }
   }
-  // console.log(firstStop,endStop)
 
 
   function go() {
@@ -120,7 +146,8 @@ export default function TrafficHeader(props) {
             </div>
             <div className={"trafficOptions " + (showOption && "trafficOptionsActive")}>
               {selectCity.map((item, index) => {
-                return <div onClick={() => { selectRoute(item.queryName) }} className="trafficOption">{item.chineseName}</div>
+               
+                return <div  key={index} onClick={() => { selectRoute(item.queryName) }} className="trafficOption">{item.chineseName}</div>
               })}
 
             </div>
@@ -134,7 +161,7 @@ export default function TrafficHeader(props) {
             </div>
             <div className={"trafficOptions " + (showOption2 && "routeOptionsActive")}>
               {routeName.map((item, index) => {
-                return <div onClick={() => { getBusData(item) }} className="trafficOption">{item}</div>
+                return <div key={index} onClick={() => { getBusData(item) }} className="trafficOption">{item}</div>
               })}
 
             </div>

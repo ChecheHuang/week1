@@ -279,7 +279,7 @@ function Header(props) {
         <p onClick={() => { setSearchRecord([]) }} className="clearSearch">清除搜尋紀錄</p>
         <div className="searchRecord">
           {searchRecord.map((item, index) => {
-            return <><p onClick={() => {
+            return <><p key={index}   onClick={() => {
               const newSearch = [...searchItem];
               newSearch[0] = item;
               setSearchItem(newSearch);
@@ -326,6 +326,7 @@ function Header(props) {
               {selectTheme.map((item, index) => {
                 return (
                   <div
+                    key={index}  
                     onClick={() => {
                       handleSelectValue(item);
                     }}
@@ -346,6 +347,7 @@ function Header(props) {
               {selectCity.map((item, index) => {
                 return (
                   <div
+                  key={index}  
                     onClick={() => {
                       handleCityValue(item);
                     }}
@@ -416,6 +418,7 @@ function Header(props) {
                     {selectTheme.map((item, index) => {
                       return (
                         <div
+                        key={index}  
                           onClick={() => {
                             handleSelectValue(item);
                           }}
@@ -436,6 +439,7 @@ function Header(props) {
                     {selectCity.map((item, index) => {
                       return (
                         <div
+                        key={index}  
                           onClick={() => {
                             handleCityValue(item);
                           }}
