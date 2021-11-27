@@ -138,12 +138,12 @@
   border-bottom: 0.3125vw solid #ff1d6c;
 }
 
-.trafficStartContain{
+.trafficHeader .trafficStartContain{
   font-size: 20px;
   display: flex;
   justify-content: space-between;
 }
-.trafficOptions,.trafficSelected{
+.trafficHeader .trafficOptions,.trafficSelected{
   font-size: 1.25vw;
 }
 .trafficStep{
