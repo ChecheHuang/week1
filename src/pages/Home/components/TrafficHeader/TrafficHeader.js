@@ -38,7 +38,15 @@ export default function TrafficHeader(props) {
     let Authorization = 'hmac username="' + AppID + '", algorithm="hmac-sha1", headers="x-date", signature="' + HMAC + '"';
     return { 'Authorization': Authorization, 'X-Date': GMTString };
   }
-  const [timeData,setTimeData]=useState([[],[]])
+  function formatSecond(time) {          
+    var t =new Date()
+    var t_s =t.getTime()
+    t.setTime(t_s+parseInt(time)*1000)
+    var t_h=t.getHours()
+    var t_m=t.getMinutes()
+    time=t_h+":"+t_m
+    console.log(time)
+}
   function getGo(){
     axios.get(
       `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
@@ -59,17 +67,28 @@ export default function TrafficHeader(props) {
             headers: getAuthorizationHeader()
           }
         ).then(function(response){
-          
-          const hasTimeData=[{Name:"",Time:""}]
-          response.data.filter((item,index)=>{
-            if(item.EstimateTime){
-              hasTimeData[index].Time=item.EstimateTime
+          console.log(response.data)
+
+       response.data.filter((item,index)=>{
+        // console.log(formatSecond(item.EstimateTime))
+          if(item.EstimateTime && item.Direction===0 ){
+            const index=stepInfoDisplay[0].Stops.findIndex((v)=>{
+              return v.StopName.Zh_tw===item.StopName.Zh_tw})
+              setStepInfoDisplay((prev)=>{
+              const newData = [...prev]
+              console.log(index)
+              if(index!==-1){
+                Object.assign(newData[0].Stops[index],{Time:item.EstimateTime})
+              }
+              return newData
+              })
               return true
             }else{
               return false
             }
           })
-          console.log(hasTimeData)
+         
+          console.log(stepInfoDisplay)
         })
       })
       .catch(function (error) {

@@ -2,6 +2,7 @@ import React from "react";
 import "./traffic.css";
 export default function Traffic(props) {
   const { stepDisplay, stepInfo, stepInfoDisplay, setStepInfoDisplay } = props;
+  // console.log(stepInfoDisplay[stepInfo])
   return (
     <>
       <div className="traffic">
