@@ -83,50 +83,50 @@ export default function TrafficHeader(props) {
       });
   }
 
-
-
-
-
-  useEffect(()=>{
+  function getTime(){
     axios.get(
       `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$format=JSON`,
       {
         headers: getAuthorizationHeader()
       }
     ).then(function(response){  
-      getTime()
-      setInterval(getTime(),[20000])
-      function getTime(){
-        response.data.filter((item,index)=>{
-          if(item.EstimateTime && item.Direction===0 ){
-            const index=stepInfoDisplay[0].Stops.findIndex((v)=>{
+      response.data.filter((item,index)=>{
+        if(item.EstimateTime && item.Direction===0 ){
+          const index=stepInfoDisplay[0].Stops.findIndex((v)=>{
+            return v.StopName.Zh_tw===item.StopName.Zh_tw})
+            setStepInfoDisplay((prev)=>{
+            const newData = [...prev]
+            if(index!==-1){   
+              Object.assign(newData[0].Stops[index],{Time:formatSecond(item.EstimateTime)})
+            }
+            return newData
+            })
+            return true
+          }else if(item.EstimateTime && item.Direction===1){
+            const index=stepInfoDisplay[1].Stops.findIndex((v)=>{
               return v.StopName.Zh_tw===item.StopName.Zh_tw})
               setStepInfoDisplay((prev)=>{
               const newData = [...prev]
               if(index!==-1){   
-                Object.assign(newData[0].Stops[index],{Time:formatSecond(item.EstimateTime)})
+                Object.assign(newData[1].Stops[index],{Time:formatSecond(item.EstimateTime)})
               }
               return newData
               })
               return true
-            }else if(item.EstimateTime && item.Direction===1){
-              const index=stepInfoDisplay[1].Stops.findIndex((v)=>{
-                return v.StopName.Zh_tw===item.StopName.Zh_tw})
-                setStepInfoDisplay((prev)=>{
-                const newData = [...prev]
-                if(index!==-1){   
-                  Object.assign(newData[1].Stops[index],{Time:formatSecond(item.EstimateTime)})
-                }
-                return newData
-                })
-                return true
-            }
-            else{
-              return false
-            }
-          })   
-      }
+          }
+          else{
+            return false
+          }
+        })   
     })
+  }
+
+
+
+  useEffect(()=>{
+    getTime()
+    setInterval(()=>{getTime()},15000)
+    
   },[stepStart])
  
   const selectCity = [
