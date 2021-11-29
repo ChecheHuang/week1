@@ -2,7 +2,7 @@ import React from "react";
 import "./traffic.css";
 export default function Traffic(props) {
   const { stepDisplay, stepInfo, stepInfoDisplay, setStepInfoDisplay } = props;
-  // console.log(stepInfoDisplay[stepInfo])
+  
   return (
     <>
       <div className="traffic">
@@ -13,8 +13,20 @@ export default function Traffic(props) {
               <div className="stepContainer">
               { 
                 stepInfoDisplay[stepInfo].Stops.map((item,index)=>{
-                  return <div key={index} className="stepArea">
-                  <div className="stepItem ">未到站</div>
+           return <div key={index} className="stepArea">
+                  {
+                    item.Time &&item.Time!=="進站中"&&item.Time!=="離站中"  && <div className="stepItem ">{item.Time}</div>
+                  }
+                  {
+                    !item.Time && <div className="stepItem stepItemActive2 ">未發車</div>
+                  }
+                  {
+                    item.Time==="進站中"&& <div className="stepItem stepItemActive1">{item.Time}</div>
+                  }
+                  {
+                    item.Time==="離站中"&& <div className="stepItem stepItemActive3">{item.Time}</div>
+                  }
+                  
                   <div className="stepText">{item.StopName.Zh_tw}</div>
                 </div>
                 })

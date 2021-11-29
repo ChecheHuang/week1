@@ -88,7 +88,7 @@
   height: 0;
   overflow-x: scroll;
   transition: .6s;
-  font-size: 24px;
+  font-size: 1.25vw;
 }
 .trafficOptionsActive{
   height: 15.625vw;
@@ -303,5 +303,10 @@
 
 .trafficOptionsActive {
   height: 32vw;
+}
+.trafficHeader .trafficStartContain{
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
 }
 }

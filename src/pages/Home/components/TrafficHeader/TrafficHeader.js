@@ -11,6 +11,7 @@ export default function TrafficHeader(props) {
   const [showOption, setShowOption] = useState(false)
   const [showOption2, setShowOption2] = useState(false)
   const [busData, setBusData] = useState([])
+  const [stepStart, setStepStart] = useState(["蘭潭", "港坪運動公園"])
   useEffect(() => {
     axios.get(
       "https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON",
@@ -39,14 +40,24 @@ export default function TrafficHeader(props) {
     return { 'Authorization': Authorization, 'X-Date': GMTString };
   }
   function formatSecond(time) {          
-    var t =new Date()
-    var t_s =t.getTime()
-    t.setTime(t_s+parseInt(time)*1000)
-    var t_h=t.getHours()
-    var t_m=t.getMinutes()
-    time=t_h+":"+t_m
-    console.log(time)
+    if(parseInt(time)<120 && parseInt(time)>60){
+      return "進站中"
+    }else if(parseInt(time)<60){
+      return "離站中"
+    }else{
+      var t =new Date()
+      var t_s =t.getTime()
+      t.setTime(t_s+parseInt(time)*1000)
+      var t_h=t.getHours()
+      var t_m=t.getMinutes()
+      if(t_m.toString().length<2){
+        t_m="0"+t_m
+      }
+      time=t_h+":"+t_m
+      return time
+    }
 }
+ 
   function getGo(){
     axios.get(
       `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${routeSelected}?$top=30&$format=JSON`,
@@ -60,36 +71,12 @@ export default function TrafficHeader(props) {
           const firstStop=response.data[0].Stops[0].StopName.Zh_tw
           const endStop=response.data[1].Stops[0].StopName.Zh_tw
           setStepStart([endStop,firstStop])
+        }else{
+          setStepInfoDisplay([response.data[0],[]])
+          const firstStop=response.data[0].Stops[0].StopName.Zh_tw
+          setStepStart(["",firstStop])
         }
-        axios.get(
-          `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$format=JSON`,
-          {
-            headers: getAuthorizationHeader()
-          }
-        ).then(function(response){
-          console.log(response.data)
-
-       response.data.filter((item,index)=>{
-        // console.log(formatSecond(item.EstimateTime))
-          if(item.EstimateTime && item.Direction===0 ){
-            const index=stepInfoDisplay[0].Stops.findIndex((v)=>{
-              return v.StopName.Zh_tw===item.StopName.Zh_tw})
-              setStepInfoDisplay((prev)=>{
-              const newData = [...prev]
-              console.log(index)
-              if(index!==-1){
-                Object.assign(newData[0].Stops[index],{Time:item.EstimateTime})
-              }
-              return newData
-              })
-              return true
-            }else{
-              return false
-            }
-          })
-         
-          console.log(stepInfoDisplay)
-        })
+        
       })
       .catch(function (error) {
         console.log(error);
@@ -101,8 +88,46 @@ export default function TrafficHeader(props) {
 
 
   useEffect(()=>{
-
-  },[])
+    axios.get(
+      `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${routeSelected}?$format=JSON`,
+      {
+        headers: getAuthorizationHeader()
+      }
+    ).then(function(response){  
+      getTime()
+      setInterval(getTime(),[20000])
+      function getTime(){
+        response.data.filter((item,index)=>{
+          if(item.EstimateTime && item.Direction===0 ){
+            const index=stepInfoDisplay[0].Stops.findIndex((v)=>{
+              return v.StopName.Zh_tw===item.StopName.Zh_tw})
+              setStepInfoDisplay((prev)=>{
+              const newData = [...prev]
+              if(index!==-1){   
+                Object.assign(newData[0].Stops[index],{Time:formatSecond(item.EstimateTime)})
+              }
+              return newData
+              })
+              return true
+            }else if(item.EstimateTime && item.Direction===1){
+              const index=stepInfoDisplay[1].Stops.findIndex((v)=>{
+                return v.StopName.Zh_tw===item.StopName.Zh_tw})
+                setStepInfoDisplay((prev)=>{
+                const newData = [...prev]
+                if(index!==-1){   
+                  Object.assign(newData[1].Stops[index],{Time:formatSecond(item.EstimateTime)})
+                }
+                return newData
+                })
+                return true
+            }
+            else{
+              return false
+            }
+          })   
+      }
+    })
+  },[stepStart])
  
   const selectCity = [
     { chineseName: "基隆市", queryName: "Keelung" },
@@ -134,7 +159,6 @@ export default function TrafficHeader(props) {
   function getBusData(route) {
     setRouteSelected(route)
   }
-  const [stepStart, setStepStart] = useState(["蘭潭", "港坪運動公園"])
   function routeSearch() {
     if (routeSelected !== "選擇路線") {
       setStepDisplay(true)
@@ -191,7 +215,8 @@ export default function TrafficHeader(props) {
           </button>
         </div>
         <div className="trafficTarget">
-          <div className={"trafficStart "+(stepInfo===0&&"trafficActive")}>
+        {
+          stepStart[0]!=="" &&  <><div className={"trafficStart "+(stepInfo===0&&"trafficActive")}>
             <div onClick={go} className="trafficStartContain">
               <div>往</div>
               <div className="trafficStep" >{stepStart[0]}</div>
@@ -203,6 +228,15 @@ export default function TrafficHeader(props) {
               <div className="trafficStep" >{stepStart[1]}</div>
             </div>
           </div>
+          </>
+        }
+      
+          {/* <div onClick={back} className={"trafficStart "+(stepInfo===1&&"trafficActive")}>
+            <div className="trafficStartContain">
+              <div>往</div>
+              <div className="trafficStep" >{stepStart[1]}</div>
+            </div>
+          </div> */}
         </div>
         <div className="trafficHeaderShadow1"></div>
         <div className="trafficHeaderShadow2"></div>

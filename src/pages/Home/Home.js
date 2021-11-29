@@ -183,7 +183,7 @@ const Home = () => {
   // 景點頁面到站資訊
   const [stepInfo, setStepInfo] = useState(0);
   //景點頁面站牌來回呈現資料
-  const [stepInfoDisplay, setStepInfoDisplay] = useState([{ Stops: [{ StopName: { Zh_tw: "" } }] },{ Stops: [{ StopName: { Zh_tw: "" } }] } ]);
+  const [stepInfoDisplay, setStepInfoDisplay] = useState([{ Stops: [{ StopName: { Zh_tw: "" } },{ StopName: { Zh_tw: "" } }] },{ Stops: [{ StopName: { Zh_tw: "" } }] },{ StopName: { Zh_tw: "" } } ]);
 
   return (
     <div>
