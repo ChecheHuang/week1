@@ -96,7 +96,7 @@ export default function TrafficHeader(props) {
             return v.StopName.Zh_tw===item.StopName.Zh_tw})
             setStepInfoDisplay((prev)=>{
             const newData = [...prev]
-            if(index!==-1){   
+            if(index!==-1&&newData[0].Stops[index]){   
               Object.assign(newData[0].Stops[index],{Time:formatSecond(item.EstimateTime)})
             }
             return newData
@@ -107,7 +107,7 @@ export default function TrafficHeader(props) {
               return v.StopName.Zh_tw===item.StopName.Zh_tw})
               setStepInfoDisplay((prev)=>{
               const newData = [...prev]
-              if(index!==-1){   
+              if(index!==-1&&newData[1].Stops[index]){   
                 Object.assign(newData[1].Stops[index],{Time:formatSecond(item.EstimateTime)})
               }
               return newData

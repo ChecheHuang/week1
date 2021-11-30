@@ -87,12 +87,14 @@ const Home = () => {
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=10&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=10&$skip=${Math.floor(Math.random() * 4000) + 50
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=10&$skip=${
+      Math.floor(Math.random() * 4000) + 50
     }&$format=JSON`,
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?$top=10&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${city[1]
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${
+      city[1]
     }?$top=20&$skip=${page * 20}&$format=JSON`,
   ]);
 
@@ -101,22 +103,26 @@ const Home = () => {
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=12&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=12&$skip=${Math.floor(Math.random() * 4000) + 50
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=12&$skip=${
+      Math.floor(Math.random() * 4000) + 50
     }&$format=JSON`,
     `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?$top=12&$skip=${Math.floor(
       Math.random() * 4000
     )}&$format=JSON`,
-    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${city[1]
+    `https://ptx.transportdata.tw/MOTC/v2/Tourism${searchClass[0].query}/${
+      city[1]
     }?$top=20&$skip=${page * 20}&$format=JSON`,
   ]);
 
   useEffect(() => {
     const newApi = [...api];
     const newRwdApi = [...rwdApi];
-    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city[1]
-      }?$top=20&$skip=${page * 20}&$format=JSON`;
-    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city[1]
-      }?$top=20&$skip=${page * 20}&$format=JSON`;
+    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${
+      city[1]
+    }?$top=20&$skip=${page * 20}&$format=JSON`;
+    newApi[3] = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${
+      city[1]
+    }?$top=20&$skip=${page * 20}&$format=JSON`;
     setApi(newApi);
     setRwdApi(newRwdApi);
   }, [page, city]);
@@ -183,8 +189,11 @@ const Home = () => {
   // 景點頁面到站資訊
   const [stepInfo, setStepInfo] = useState(0);
   //景點頁面站牌來回呈現資料
-  const [stepInfoDisplay, setStepInfoDisplay] = useState([{ Stops: [{ StopName: { Zh_tw: "" } },{ StopName: { Zh_tw: "" } }] },{ Stops: [{ StopName: { Zh_tw: "" } }] },{ StopName: { Zh_tw: "" } } ]);
-
+  const [stepInfoDisplay, setStepInfoDisplay] = useState([
+    { Stops: [{ StopName: { Zh_tw: "" } }, { StopName: { Zh_tw: "" } }] },
+    { Stops: [{ StopName: { Zh_tw: "" } }, { StopName: { Zh_tw: "" } }] }
+  ]);
+  console.log(stepInfoDisplay[0].Stops)
   return (
     <div>
       <TopBar
